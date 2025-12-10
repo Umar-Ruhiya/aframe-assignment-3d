@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>3D Scene - A-Frame Conversion </title>
+    <script src="https://aframe.io/releases/1.5.0/aframe.min.js"></script>
+    <style>
+        body { margin: 0; overflow: hidden; background-color: #f0f0f0; }
+        #instructions {
+            position: absolute;
+            top: 15px;
+            width: 100%;
+            text-align: center;
+            font-size: 18px;
+            color: #333;
+            background-color: rgba(255, 255, 255, 0.7);
+            padding: 5px 0;
+            z-index: 10;
+            font-family: Arial, sans-serif;
+            pointer-events: none;
+        }
+    </style>
+</head>
+<body>
+
+<div id="instructions">
+    Click/Tap to look around. Use **WASD** to move.
+</div>
+
+<a-scene 
+    shadow="type: pcfsoft" 
+    fog="type: linear; color: #f0f0f0; near: 0; far: 75" 
+    background="color: #f0f0f0">
+
+    <a-entity 
+        camera 
+        wasd-controls="acceleration: 10" 
+        look-controls="pointerLockEnabled: true" 
+        position="5 5 5"
+        rotation="-35 45 0">
+    </a-entity>
+
+    <a-light 
+        type="directional" 
+        color="#ffffff" 
+        intensity="1.2" 
+        position="5 15 10" 
+        shadow-map-width="2048" 
+        shadow-map-height="2048"
+        shadow-camera-near="0.5" 
+        shadow-camera-far="50" 
+        shadow-camera-left="-10" 
+        shadow-camera-right="10" 
+        shadow-camera-top="10" 
+        shadow-camera-bottom="-10"
+        shadow="cast: true">
+    </a-light>
+    <a-light 
+        type="ambient" 
+        color="#666666" 
+        intensity="1">
+    </a-light>
+
+    <a-plane color="#79a85c" width="15" height="15" rotation="-90 0 0" shadow="receive: true"></a-plane>
+    <a-plane color="#9ac3e0" width="15" height="5" position="0 2.5 -7.5" shadow="receive: true"></a-plane>
+    <a-plane color="#9ac3e0" width="15" height="5" rotation="0 90 0" position="-7.5 2.5 0" shadow="receive: true"></a-plane>
+
+    <a-box color="#8b4513" depth="2" height="0.2" width="3" position="0 1.1 0" shadow="cast: true; receive: true"></a-box>
+    <a-box color="#5c3b16" depth="0.15" height="1" width="0.15" position="1.3 0.5 0.9" shadow="cast: true"></a-box>
+    <a-box color="#5c3b16" depth="0.15" height="1" width="0.15" position="-1.3 0.5 0.9" shadow="cast: true"></a-box>
+    <a-box color="#5c3b16" depth="0.15" height="1" width="0.15" position="1.3 0.5 -0.9" shadow="cast: true"></a-box>
+    <a-box color="#5c3b16" depth="0.15" height="1" width="0.15" position="-1.3 0.5 -0.9" shadow="cast: true"></a-box>
+    <a-mixin id="chair-material" material="color: #4a2e13"></a-mixin>
+    <a-entity position="-2.2 0 0" rotation="0 90 0">
+        <a-box mixin="chair-material" width="1" height="0.1" depth="1" position="0 0.9 0" shadow="cast: true"></a-box>
+        <a-box mixin="chair-material" width="1" height="1" depth="0.1" position="0 1.4 -0.45" shadow="cast: true"></a-box>
+        <a-box mixin="chair-material" width="0.1" height="0.8" depth="0.1" position="-0.4 0.4 -0.4" shadow="cast: true"></a-box>
+        <a-box mixin="chair-material" width="0.1" height="0.8" depth="0.1" position="0.4 0.4 -0.4" shadow="cast: true"></a-box>
+        <a-box mixin="chair-material" width="0.1" height="0.8" depth="0.1" position="-0.4 0.4 0.4" shadow="cast: true"></a-box>
+        <a-box mixin="chair-material" width="0.1" height="0.8" depth="0.1" position="0.4 0.4 0.4" shadow="cast: true"></a-box>
+    </a-entity>
+    <a-entity position="2.2 0 0" rotation="0 -90 0">
+        <a-box mixin="chair-material" width="1" height="0.1" depth="1" position="0 0.9 0" shadow="cast: true"></a-box>
+        <a-box mixin="chair-material" width="1" height="1" depth="0.1" position="0 1.4 -0.45" shadow="cast: true"></a-box>
+        <a-box mixin="chair-material" width="0.1" height="0.8" depth="0.1" position="-0.4 0.4 -0.4" shadow="cast: true"></a-box>
+        <a-box mixin="chair-material" width="0.1" height="0.8" depth="0.1" position="0.4 0.4 -0.4" shadow="cast: true"></a-box>
+        <a-box mixin="chair-material" width="0.1" height="0.8" depth="0.1" position="-0.4 0.4 0.4" shadow="cast: true"></a-box>
+        <a-box mixin="chair-material" width="0.1" height="0.8" depth="0.1" position="0.4 0.4 0.4" shadow="cast: true"></a-box>
+    </a-entity>
+
+    <a-entity position="-0.6 1.5 -0.2">
+        <a-cylinder 
+            radius="0.2" 
+            height="0.8" 
+            material="color: #00563b; metalness: 0.5; roughness: 0.4"
+            shadow="cast: true">
+        </a-cylinder>
+        <a-cylinder 
+            radius="0.21" 
+            height="0.05" 
+            position="0 0.425 0"
+            material="color: #aaaaaa; metalness: 0.8; roughness: 0.2"
+            shadow="cast: true">
+        </a-cylinder>
+        <a-text 
+            value="MILO" 
+            color="#ffffff" 
+            align="center"
+            width="3.0"
+            position="0.208 0.05 0.208"
+            rotation="0 90 0">
+        </a-text>
+    </a-entity>
+    <a-entity position="0.6 1.5 -0.2">
+        <a-cylinder 
+            radius="0.2" 
+            height="0.8" 
+            material="color: #f5f5dc; metalness: 0.5; roughness: 0.4"
+            shadow="cast: true">
+        </a-cylinder>
+        <a-cylinder 
+            radius="0.21" 
+            height="0.05" 
+            position="0 0.425 0"
+            material="color: #aaaaaa; metalness: 0.8; roughness: 0.2"
+            shadow="cast: true">
+        </a-cylinder>
+        <a-text 
+            value="MILK" 
+            color="#aa0000" 
+            align="center"
+            width="3.0"
+            position="0.208 0.05 0.208"
+            rotation="0 90 0">
+        </a-text>
+    </a-entity>
+
+    <a-cylinder color="#9c4f00" radius="0.275" radius-bottom="0.3" height="0.4" position="0 1.3 -0.6" segments-radial="8" shadow="cast: true"></a-cylinder>
+    <a-sphere color="#38761d" radius="0.3" position="0 1.7 -0.6" segments-width="16" segments-height="8" shadow="cast: true"></a-sphere>
+
+    <a-mixin id="cup-material" material="color: #ffffff; roughness: 0.9; metalness: 0.1"></a-mixin>
+
+    <a-entity position="0.4 1.3 0.5">
+        <a-cylinder 
+            mixin="cup-material"
+            radius="0.2" 
+            radius-bottom="0.2" 
+            height="0.4" 
+            shadow="cast: true"
+            segments-radial="32">
+        </a-cylinder>
+        <a-box 
+            mixin="cup-material"
+            width="0.05" 
+            height="0.35" 
+            depth="0.15" 
+            position="0.22 0 0" 
+            rotation="0 0 0" 
+            shadow="cast: true">
+        </a-box>
+    </a-entity>
+
+    <a-entity position="-0.4 1.3 0.5">
+        <a-cylinder 
+            mixin="cup-material"
+            radius="0.2" 
+            radius-bottom="0.2" 
+            height="0.4" 
+            shadow="cast: true"
+            segments-radial="32">
+        </a-cylinder>
+        <a-box 
+            mixin="cup-material"
+            width="0.05" 
+            height="0.35" 
+            depth="0.15" 
+            position="0.22 0 0" 
+            rotation="0 0 0" 
+            shadow="cast: true">
+        </a-box>
+    </a-entity>
+
+</a-scene>
+</body>
+</html>
